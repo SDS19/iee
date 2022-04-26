@@ -19,10 +19,4 @@ public class DataController {
         return service.dateRange(startDate, endDate);
     }
 
-    @GetMapping("/lineChart")
-    @ResponseBody
-    public List<WindData> lineChart(){
-        return null;
-    }
-
 }
