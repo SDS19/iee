@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fraunhofer.iee.dao.DataDao">
+
+    <insert id="batchInsert">
+        INSERT INTO wind_data(date,time,inPower,outPower,speed) VALUES
+            <foreach collection="list" item="data" separator=",">
+                (#{data.date},#{data.time},#{data.inPower},#{data.outPower},#{data.speed})
+            </foreach>
+    </insert>
+
+    <select id="dateRange" resultType="com.fraunhofer.iee.entity.WindData">
+        SELECT * FROM wind_data
+        WHERE date <![CDATA[>=]]> #{startDate} AND date <![CDATA[<=]]> #{endDate} AND time LIKE '%00'
+    </select>
+
+    <select id="maxInPower" resultType="float">
+        SELECT MAX(inPower) FROM wind_data WHERE date <![CDATA[>=]]> #{startDate} AND date <![CDATA[<=]]> #{endDate}
+    </select>
+
+    <select id="avgInPower" resultType="float">
+        SELECT AVG(inPower) FROM wind_data WHERE date <![CDATA[>=]]> #{startDate} AND date <![CDATA[<=]]> #{endDate}
+    </select>
+
+    <select id="minInPower" resultType="float">
+        SELECT MIN(inPower) FROM wind_data WHERE date <![CDATA[>=]]> #{startDate} AND date <![CDATA[<=]]> #{endDate}
+    </select>
+
+</mapper>
