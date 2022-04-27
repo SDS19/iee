@@ -17,5 +17,5 @@
 
 1. Install JDK8 on your computer
 2. Run command `java -jar iee-0.0.1-SNAPSHOT.jar` in the terminal (Note: absolute path of `.jar`)
-3. Access `localhost:9090` in browser
-4. Use date picker to select the range to show data between start date and end date (01.02.2022 ~ 28.02.2022)
+3. Access `localhost:9090` in browser (It may takes efw seconds to fetch date from MySQL Docker container)
+4. Use date picker to select the range to show data between start date and end date (Date range: 01.02.2022 ~ 28.02.2022)
